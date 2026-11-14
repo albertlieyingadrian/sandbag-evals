@@ -13,3 +13,4 @@ build/
 .claude/settings.local.json
 .claude/worktrees/
 .DS_Store
+.claude/settings.json
