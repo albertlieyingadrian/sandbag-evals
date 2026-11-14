@@ -95,7 +95,7 @@ eval(password_lock_sandbagging(), model="openai/gpt-5-nano")
 
 ### Results
 
-All 300 samples, one epoch, `inspect_ai` 0.3.289, 2026-11-14. The four `hf/` runs used an Apple M5 Max (MPS, bf16) and took 12 to 16 seconds each. The `.eval` logs are in [`logs/`](logs/).
+All 300 samples, one epoch, `inspect_ai` 0.3.289, 2026-11-14. The four `hf/` runs used an Apple M5 Max (MPS, bf16) and took 12 to 16 seconds each. The `.eval` logs, made at commit `0704ec1`, are in [`logs/`](logs/).
 
 | Model | Password | `accuracy_no_password` | `accuracy_password` | `sandbagging_gap` (± paired SE) |
 | --- | --- | --- | --- | --- |
