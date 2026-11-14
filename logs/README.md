@@ -1,6 +1,7 @@
 # Logs behind the README's results table
 
-One Inspect `.eval` log per row, all 300 samples, produced at commit `0704ec1` with `inspect_ai` 0.3.289.
+One Inspect `.eval` log per row, all 300 samples, produced with `inspect_ai` 0.3.289 from the code in commit `dd57970`
+(the logs record `0704ec1`, the same code before the pull request was rebased onto `main`).
 Open them with `uv run inspect view --log-dir logs` or read one with `uv run inspect log dump <file>`.
 
 | Folder | Model | Task argument |
