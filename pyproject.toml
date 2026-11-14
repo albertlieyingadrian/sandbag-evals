@@ -1,0 +1,59 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sandbag-evals"
+version = "0.1.0"
+description = "Inspect evals for AI sandbagging: does a model score lower when it thinks no one is unlocking it?"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Albert Lie" }]
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
+dependencies = ["inspect-ai>=0.3.150"]
+
+[project.optional-dependencies]
+# Run the example organism (a LoRA adapter on Qwen2.5-1.5B-Instruct) through Inspect's `hf/` provider.
+hf = ["torch>=2.4", "transformers>=4.51", "peft>=0.14", "accelerate>=1.0"]
+openai = ["openai>=1.99"]
+
+[project.entry-points.inspect_ai]
+password_lock = "sandbag_evals.password_lock"
+
+[project.urls]
+Homepage = "https://github.com/albertlieyingadrian/sandbag-evals"
+Issues = "https://github.com/albertlieyingadrian/sandbag-evals/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sandbag_evals"]
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-inspect-evals==0.3.0", "ruff>=0.9", "mypy>=1.13"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.inspect-evals-lint]
+preset = "single-eval"
+# The eval's metadata lives in its Inspect Evals Register entry, as the register's own lint config assumes.
+eval-yaml-required = false
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "UP", "B", "SIM", "C4", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]
